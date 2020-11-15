@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+    <div class="w-full h-full flex justify-center items-center relative">
+        <div class="w-40 p-1 px-3 rounded shadow">
+            <div class="card flex justify-between items-center">
+                <div class="flex justify-center items-center">
+                    <h1>
+                        <img class="w-10 h-10 rounded-full" src="avatar.jpg" alt="avatar">
+                    </h1>
+                    <div class="flex flex-column pl-10">
+                        <p class="text-primary font-semibold">Marina Random</p>
+                        <p>1.002.444</p>
+                    </div>
+                </div>
+                <button class="btn-subscribe text-white b-none bg-red p-1 rounded text-lg shadow cursor-pointer transition">
+                    <i class="icon-subscribe px-1 far fa-bell text-1xl"></i>
+                    Subscribe
+                </button>
+            </div>
+        </div>
+
+        <div class="message bg-green rounded opacity-1 shadow absolute top-2 hidden">
+            <p class="text-white p-1 content-message">You subcribe and channel!</p>
+        </div>
+    </div>
+
+    <script>
+        const subscribe = document.querySelector('.btn-subscribe');
+        const iconSubscribe = document.querySelector('.icon-subscribe');
+        const message = document.querySelector('.message');
+        const contentMessage = document.querySelector('.content-message');
+
+        function andSubscribe() {
+            iconSubscribe.classList.toggle('far');
+            iconSubscribe.classList.toggle('fas');
+
+            subscribe.classList.toggle('bg-gray');
+            subscribe.classList.toggle('bg-red');
+
+            if(subscribe.classList.contains('bg-gray')) {
+                message.classList.add('bg-green');
+                message.classList.remove('bg-red');
+
+                contentMessage.innerHTML = 'You subs-subscribe and channel!';
+            } else {
+                message.classList.remove('bg-green');
+                message.classList.add('bg-red');
+                contentMessage.innerHTML = 'You subcribe and channel!';
+            }
+
+            message.classList.remove('hidden');
+            setTimeout(() => {
+                message.classList.add('hidden');
+            }, 1000)
+        }
+
+        subscribe.addEventListener('click', andSubscribe);
+    </script>
+</body>
+</html>
